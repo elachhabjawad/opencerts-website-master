@@ -1,0 +1,26 @@
+ /* .bg-navy{
+  
+   background-color:#1E90FF;
+}  */
+
+
+.border-secondary{
+  border: 10px solid gray;
+}
+
+.p15{
+  font-size: 15px;
+}
+
+.p10{
+  font-size: 13px;
+}
+
+.mb-8{
+  margin-bottom: 150px;
+}
+
+.mr-6{
+  margin-right: 10px;
+}
+

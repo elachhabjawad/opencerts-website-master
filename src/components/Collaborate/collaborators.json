@@ -1,0 +1,74 @@
+[
+  {
+    "id": "trybeid",
+    "name": "Trybe.ID",
+    "description": "Provides a Self-Sovereign Identity (SSI) powered digital credential solution supporting the OpenCerts schema as well as W3C DID and Verifiable Credential standards.",
+    "website": "https://trybe.id",
+    "key": "trybeid",
+    "logo": "/static/images/collaborate/trybeid.png"
+  },
+  {
+    "id": "riverr",
+    "name": "Riverr",
+    "description": "Provides a trusted universal industry standard for identification and health credentials. Riverr’s platform conforms to different workflows that require tamper-proof, verifiable documentation.",
+    "website": "https://riverr.ai",
+    "key": "riverr",
+    "logo": "/static/images/collaborate/RIVERR_logo.png"
+  },
+  {
+    "id": "nextid",
+    "name": "NextID Pte Ltd",
+    "description": "Our hosted NextCert service produces digitally-signed, tamper-proof certificates which implement the OpenAttestation framework. NextCert supports any data structure or graphical layout.",
+    "website": "https://nextid.com",
+    "key": "nextid",
+    "logo": "/static/images/collaborate/NEXTID_logo.png"
+  },
+  {
+    "id": "edufied",
+    "name": "Edufied",
+    "description": "Edufied provides a  secured and decentralized system for Certificate Issuers, Individuals and Employers to store & verify certifications and credentials using Blockchain Technology.",
+    "website": "https://edufied.network",
+    "key": "edufied",
+    "logo": "/static/images/collaborate/EDUFIED_logo.png"
+  },
+  {
+    "id": "accredify",
+    "name": "Accredify",
+    "description": "Enables institutions to issue tamper-proof digital certificates using the OpenCerts Schema.",
+    "website": "https://www.accredify.io",
+    "key": "accredify",
+    "logo": "/static/images/collaborate/ACCREDIFY_logo.png"
+  },
+  {
+    "id": "catalyst",
+    "name": "Knowledge Catalyst Pte. Ltd.",
+    "description": "Knowledge Catalyst offers a Software-as-a-Service to enable Institutions to issue tampered-proof credentials based on Opencerts schema and manage the entire Credential Life-Cycle Management.",
+    "website": "https://knowledgecatalyst.io",
+    "key": "knowledge catalyst",
+    "logo": "/static/images/collaborate/KC_logo.png"
+  },
+  {
+    "id": "3dcerts",
+    "name": "R3D Singapore Pte Ltd",
+    "description": "3DCerts protocol is designed to create an added level of protection for certificate issuers (institutions or corporations), owners (students or users) and employers.",
+    "website": "https://www.3dcerts.com",
+    "key": "3d certs",
+    "logo": "/static/images/collaborate/3dcerts_logo.svg"
+  },
+  {
+    "id": "aokpass",
+    "name": "AOKpass",
+    "description": "ICC AOKpass provides you with a digitally authenticated, secure and portable copy of your medical records, approved by a medical professional and accessible only by you.",
+    "website": "https://www.aokpass.com",
+    "key": "aokpass",
+    "logo": "/static/images/collaborate/aokpass_logo.svg"
+  },
+  {
+    "id": "jedtrade",
+    "name": "JEDTrade",
+    "description": "We enable enterprises to issue trusted and tamper-proof digital certificates using OpenCerts Schema. With our workflow engine, we allow enterprises to customize their business workflow.",
+    "website": "https://www.jedtrade.com",
+    "key": "jedtrade",
+    "logo": "/static/images/collaborate/jedtrade_logo.png"
+  }
+]

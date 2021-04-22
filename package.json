@@ -1,0 +1,239 @@
+{
+  "name": "opencerts-website",
+  "version": "2.0.0",
+  "engines": {
+    "node": "14",
+    "npm": "6"
+  },
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watchAll",
+    "test:update": "jest -u",
+    "dev": "next",
+    "lint": "npm run eslint && npm run lint:opencert",
+    "lint:fix": "npm run eslint:fix && npm run lint:opencert:fix",
+    "eslint": "eslint . --ext .js,.tsx,.ts --max-warnings 0",
+    "eslint:fix": "npm run lint -- --fix",
+    "lint:opencert": "prettier --check \"{src,public}/**/*.opencert\"",
+    "lint:opencert:fix": "prettier --write \"{src,public}/**/*.opencert\"",
+    "build": "next build",
+    "start:local": "npm run build && cross-env LEGACY_RENDERER_URL=\"http://localhost:3000\" next start -p 3001",
+    "build:static": "next build && npm run export",
+    "build:registry": "echo yes we did",
+    "export": "next export",
+    "start": "next build && next start",
+    "postexport": "node post-export.js",
+    "start:watch": "nodemon --exec \"npm run start\"",
+    "cname": "echo 'opencerts.io' > out/CNAME",
+    "deploy": "rm -rf out && npm run build:static",
+    "analyze": "BUNDLE_ANALYZE=browser npm run start",
+    "dev-cli": "node -r esm ./scripts/cli.js",
+    "serve-static": "http-server out -s -p 3000",
+    "integration": "testcafe chrome src/**/*.js --ts-config-path ./tsconfig.json",
+    "integration:single": "testcafe chrome -L --app \"npm run serve-static\"",
+    "integration:headless": "testcafe -c 4 chrome:headless src/**/*.spec.js",
+    "integration:watch": "nodemon --exec \"npm run integration\" --watch src"
+  },
+  "dependencies": {
+    "@govtechsg/decentralized-renderer-react-components": "^3.3.0",
+    "@govtechsg/oa-encryption": "^1.3.2",
+    "@govtechsg/open-attestation": "^4.1.1",
+    "@govtechsg/opencerts-verify": "^3.0.0",
+    "@types/google.analytics": "0.0.40",
+    "@types/react-google-recaptcha": "^2.1.0",
+    "@zeit/next-bundle-analyzer": "^0.1.2",
+    "bootstrap": "^4.6.0",
+    "clipboard-copy": "^4.0.1",
+    "debug": "^4.3.1",
+    "ethers": "^5.0.26",
+    "isomorphic-fetch": "^3.0.0",
+    "lodash": "^4.17.20",
+    "next": "10.0.3",
+    "next-ga": "^2.3.4",
+    "next-redux-wrapper": "^6.0.2",
+    "next-seo": "^4.17.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-dropzone": "^11.2.4",
+    "react-feather": "^2.0.9",
+    "react-google-recaptcha": "^2.1.0",
+    "react-qr-svg": "^2.3.0",
+    "react-redux": "^7.2.2",
+    "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-saga": "^1.1.3"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.11.6",
+    "@testing-library/react": "^11.2.2",
+    "@types/debug": "^4.1.5",
+    "@types/jest": "^26.0.16",
+    "@types/react": "^17.0.0",
+    "@types/react-redux": "^7.1.11",
+    "@typescript-eslint/eslint-plugin": "^4.9.0",
+    "@typescript-eslint/parser": "^4.9.0",
+    "autoprefixer": "^10.0.4",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^26.6.3",
+    "babel-plugin-module-resolver": "^4.0.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "cross-env": "^7.0.3",
+    "downloads-folder": "^3.0.1",
+    "eslint": "^7.14.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jest": "^24.1.3",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint-plugin-testcafe-community": "^1.1.0",
+    "eslint-plugin-testing-library": "^3.10.1",
+    "http-server": "^0.12.3",
+    "jest": "^26.6.3",
+    "jest-sonar-reporter": "^2.0.0",
+    "jest-watch-typeahead": "^0.6.1",
+    "nodemon": "^2.0.6",
+    "postcss-import": "^13.0.0",
+    "prettier": "^2.2.1",
+    "tailwindcss": "^1.9.6",
+    "testcafe": "1.8.5",
+    "testcafe-react-selectors": "^4.1.1",
+    "typescript": "^4.1.2"
+  },
+  "jest": {
+    "testResultsProcessor": "jest-sonar-reporter"
+  },
+  "jestSonar": {
+    "sonar56x": true,
+    "reportPath": ".coverage",
+    "reportFile": "sonar-report.xml",
+    "indent": 2
+  },
+  "eslintConfig": {
+    "parser": "@typescript-eslint/parser",
+    "env": {
+      "browser": true,
+      "jest": true
+    },
+    "extends": [
+      "plugin:@typescript-eslint/recommended",
+      "plugin:react/recommended",
+      "plugin:prettier/recommended",
+      "plugin:import/typescript",
+      "prettier",
+      "prettier/@typescript-eslint",
+      "prettier/react",
+      "plugin:testing-library/react"
+    ],
+    "parserOptions": {
+      "project": "./tsconfig.json"
+    },
+    "plugins": [
+      "import",
+      "react",
+      "@typescript-eslint",
+      "react-hooks",
+      "testing-library"
+    ],
+    "rules": {
+      "@typescript-eslint/explicit-function-return-type": [
+        "warn",
+        {
+          "allowExpressions": true,
+          "allowTypedFunctionExpressions": true
+        }
+      ],
+      "@typescript-eslint/explicit-member-accessibility": 0,
+      "@typescript-eslint/no-use-before-define": 0,
+      "array-callback-return": "warn",
+      "import/no-default-export": "error",
+      "import/no-unresolved": 2,
+      "import/order": [
+        "error",
+        {
+          "alphabetize": {
+            "order": "asc"
+          }
+        }
+      ],
+      "jest/no-hooks": 0,
+      "react/no-unescaped-entities": [
+        "error",
+        {
+          "forbid": [
+            ">",
+            "}",
+            "\""
+          ]
+        }
+      ],
+      "react/prop-types": "off",
+      "react/self-closing-comp": "error",
+      "react-hooks/exhaustive-deps": "error",
+      "react-hooks/rules-of-hooks": "error"
+    },
+    "overrides": [
+      {
+        "files": [
+          "./**/*.js"
+        ],
+        "rules": {
+          "@typescript-eslint/no-var-requires": "off",
+          "@typescript-eslint/explicit-function-return-type": "off"
+        }
+      },
+      {
+        "files": [
+          "./**/*.stories.tsx"
+        ],
+        "rules": {
+          "@typescript-eslint/explicit-function-return-type": "off"
+        }
+      },
+      {
+        "files": [
+          "*.test.ts",
+          "*.test.tsx"
+        ],
+        "extends": [
+          "plugin:jest/all"
+        ],
+        "rules": {
+          "jest/prefer-expect-assertions": "off"
+        }
+      },
+      {
+        "files": [
+          "pages/*.tsx"
+        ],
+        "rules": {
+          "import/no-default-export": "off"
+        }
+      },
+      {
+        "files": [
+          "*.spec.js",
+          "*.spec.ts"
+        ],
+        "plugins": [
+          "testcafe-community"
+        ],
+        "extends": "plugin:testcafe-community/recommended"
+      }
+    ]
+  },
+  "prettier": {
+    "printWidth": 120,
+    "overrides": [
+      {
+        "files": "*.opencert",
+        "options": {
+          "parser": "json"
+        }
+      }
+    ]
+  }
+}
